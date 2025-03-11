@@ -81,7 +81,8 @@ export default [
           'prettier',
           'typescript-eslint',
           'typescript',
-          'typescript/lib/tsserverlibrary'
+          'typescript/lib/tsserverlibrary',
+          'core-js/full'
         ],
         include: [],
       }),

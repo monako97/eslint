@@ -7,6 +7,8 @@ import { config, type ConfigArray, configs, type ConfigWithExtends } from 'types
 
 import type { AST, Linter, Rule, SourceCode } from './types';
 
+import 'core-js/full';
+
 interface GlobalsConfig {
   [name: string]: 'off' | 'readonly' | 'writable' | boolean;
 }
