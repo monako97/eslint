@@ -9,6 +9,7 @@ import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import { nodeExternals } from 'rollup-plugin-node-externals';
+
 import esmShim from './esm-shim.mjs';
 
 // 添加自定义插件转换js扩展名为cjs
@@ -28,7 +29,17 @@ export default [
       file: 'lib/index.d.mts',
       format: 'es',
     },
-    plugins: [dts()],
+    plugins: [
+      dts(),
+      {
+        name: 'replace-declare-dts',
+        renderChunk(code) {
+          return code
+            .replaceAll('declare class ', 'export class ')
+            .replaceAll('declare namespace ', 'export namespace ');
+        },
+      },
+    ],
   },
   {
     input: 'src/index.mts',
@@ -82,7 +93,7 @@ export default [
           'typescript-eslint',
           'typescript',
           'typescript/lib/tsserverlibrary',
-          'core-js/full'
+          'core-js/full',
         ],
         include: [],
       }),

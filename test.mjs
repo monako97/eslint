@@ -1,4 +1,4 @@
-import p, { ESLint } from "./lib/index.mjs";
+import { ESLint } from './lib/index.mjs';
 
 try {
   console.log('ESLint runing...');
@@ -8,11 +8,12 @@ try {
     cache: false,
     fix: false,
   });
-  const results = await lint.lintFiles([
-    "__tests__/a.ts"
-  ]);
+  const results = await lint.lintFiles(['__tests__/a.ts']);
   const formatter = await lint.loadFormatter('stylish');
-  const output = await formatter.format(results);
+  const output = await formatter.format(results, {
+    cwd: process.cwd(),
+    ruleMeta: {},
+  });
 
   if (fix) {
     await ESLint.outputFixes(results);
@@ -29,4 +30,3 @@ try {
 } catch (error) {
   console.log(error);
 }
-  
