@@ -5,7 +5,7 @@ try {
   console.time('ESLint');
   const fix = false;
   const lint = new ESLint({
-    cache: true,
+    cache: false,
     fix: false,
   });
   const results = await lint.lintFiles([

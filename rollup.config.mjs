@@ -16,7 +16,7 @@ const jssToCjsExtension = () => ({
   name: 'js-to-cjs-extension',
   renderChunk(code) {
     // 专门替换模板字符串中的 `}.js` 为 `}.cjs`
-    return code.replace(/}\.js`/g, '}.cjs`');
+    return code.replace(/}\.js`/g, '}.cjs`').replace(/\.\/worker/g, './worker.cjs');
   },
 });
 
@@ -130,7 +130,7 @@ export default [
       format: 'es',
       interop: 'auto',
       esModule: true,
-      exports: 'named',
+      exports: 'auto',
       generatedCode: {
         preset: 'es2015',
         privateFields: true,
@@ -183,11 +183,67 @@ export default [
       }),
       typescript(),
       commonjs({
-        requireReturnsDefault: false,
+        requireReturnsDefault: 'auto',
         esmExternals: false,
         exclude: ['**/*.node', '**/*.d.ts'],
       }),
       jssToCjsExtension(),
+      terser({
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      }),
+    ],
+  },
+  {
+    cache: true,
+    preserveSymlinks: true,
+    input: {
+      worker: 'worker.cjs',
+    },
+    perf: true,
+    output: {
+      dir: 'lib/node_modules/eslint-plugin-prettier',
+      entryFileNames: '[name].cjs',
+      format: 'cjs',
+      interop: 'auto',
+      esModule: false,
+      exports: 'auto',
+      preserveModules: true,
+      preserveModulesRoot: 'node_modules/eslint-plugin-prettier',
+      validate: true,
+      sourcemap: false,
+      inlineDynamicImports: false,
+    },
+    plugins: [
+      alias(),
+      nodeExternals({
+        deps: false,
+        devDeps: true,
+        peerDeps: true,
+        optDeps: true,
+        exclude: ['synckit', 'prettier'],
+        include: [],
+      }),
+      resolve({
+        preferBuiltins: true,
+        exportConditions: ['node', 'import'],
+        extensions: ['.mjs', '.cjs', '.js', '.ts', '.json', '.node'],
+        browser: false,
+        mainFields: ['source', 'module', 'main'],
+      }),
+      commonjs({
+        requireReturnsDefault: 'auto',
+        esmExternals: false,
+        exclude: ['**/*.node', '**/*.d.ts', '**/*.json'],
+      }),
+      // {
+      //   name: 'fix-formatters',
+      //   renderChunk(code) {
+      //     return code.replace(/exports\.default\s*=\s*(\w+);/, 'module.exports = $1;');
+      //   },
+      // },
       terser({
         compress: {
           drop_console: true,

@@ -245,4 +245,5 @@ const plugin = {
   processors: {},
 };
 
-export { type AST, plugin as default, ESLint, type Linter, loadESLint, type Rule, type SourceCode };
+export { type AST, ESLint, type Linter, loadESLint, type Rule, type SourceCode };
+export default plugin;
