@@ -1,6 +1,6 @@
 {
   "name": "@moneko/eslint",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "description": "eslint",
   "main": "lib/index.mjs",
@@ -17,7 +17,6 @@
   "author": "moneko",
   "license": "MIT",
   "devDependencies": {
-    "@humanwhocodes/retry": "^0.4.2",
     "@rollup/plugin-alias": "5.1.1",
     "@rollup/plugin-commonjs": "28.0.3",
     "@rollup/plugin-json": "6.1.0",
@@ -30,7 +29,6 @@
     "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-simple-import-sort": "12.1.1",
     "globals": "16.0.0",
-    "magic-string": "^0.30.17",
     "prettier": "3.5.3 ",
     "rollup": "4.35.0",
     "rollup-plugin-dts": "6.1.1",
