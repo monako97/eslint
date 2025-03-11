@@ -1,0 +1,32 @@
+import p, { ESLint } from "./lib/index.mjs";
+
+try {
+  console.log('ESLint runing...');
+  console.time('ESLint');
+  const fix = false;
+  const lint = new ESLint({
+    cache: true,
+    fix: false,
+  });
+  const results = await lint.lintFiles([
+    "__tests__/a.ts"
+  ]);
+  const formatter = await lint.loadFormatter('stylish');
+  const output = await formatter.format(results);
+
+  if (fix) {
+    await ESLint.outputFixes(results);
+  }
+  if (output) {
+    process.stdout.write(output);
+  }
+  const hasErrors = results.some((result) => result.errorCount > 0);
+
+  console.timeEnd('ESLint');
+  if (hasErrors) {
+    process.exit(1);
+  }
+} catch (error) {
+  console.log(error);
+}
+  
