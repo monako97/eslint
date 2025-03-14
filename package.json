@@ -1,13 +1,13 @@
 {
   "name": "@moneko/eslint",
-  "version": "1.0.1",
+  "version": "1.1.0-beta.0",
   "type": "module",
   "description": "eslint",
   "main": "lib/index.mjs",
-  "bundleDependencies": false,
-  "deprecated": false,
   "scripts": {
+    "prebuild": "rollup --config rollup.dts.mjs",
     "build": "rollup -c",
+    "postbuild": "rollup --config rollup.formatters.mjs",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -16,11 +16,90 @@
   ],
   "author": "moneko",
   "license": "MIT",
+  "exports": {
+    ".": {
+      "node": {
+        "types": "./lib/index.d.mts",
+        "module-sync": "./lib/index.mjs",
+        "default": "./lib/index.mjs"
+      },
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./lib/index.mjs"
+      },
+      "default": {
+        "types": "./lib/index.d.mts",
+        "default": "./lib/index.mjs"
+      }
+    },
+    "./base": {
+      "node": {
+        "types": "./lib/base.d.mts",
+        "module-sync": "./lib/base.mjs",
+        "default": "./lib/base.mjs"
+      },
+      "import": {
+        "types": "./lib/base.d.mts",
+        "default": "./lib/base.mjs"
+      },
+      "default": {
+        "types": "./lib/base.d.mts",
+        "default": "./lib/base.mjs"
+      }
+    },
+    "./react": {
+      "node": {
+        "types": "./lib/react.d.mts",
+        "module-sync": "./lib/react.mjs",
+        "default": "./lib/react.mjs"
+      },
+      "import": {
+        "types": "./lib/react.d.mts",
+        "default": "./lib/react.mjs"
+      },
+      "default": {
+        "types": "./lib/react.d.mts",
+        "default": "./lib/react.mjs"
+      }
+    },
+    "./solid": {
+      "node": {
+        "types": "./lib/solid.d.mts",
+        "module-sync": "./lib/solid.mjs",
+        "default": "./lib/solid.mjs"
+      },
+      "import": {
+        "types": "./lib/solid.d.mts",
+        "default": "./lib/solid.mjs"
+      },
+      "default": {
+        "types": "./lib/solid.d.mts",
+        "default": "./lib/solid.mjs"
+      }
+    },
+    "./vue": {
+      "node": {
+        "types": "./lib/vue.d.mts",
+        "module-sync": "./lib/vue.mjs",
+        "default": "./lib/vue.mjs"
+      },
+      "import": {
+        "types": "./lib/vue.d.mts",
+        "default": "./lib/vue.mjs"
+      },
+      "default": {
+        "types": "./lib/vue.d.mts",
+        "default": "./lib/vue.mjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.26.0",
     "@rollup/plugin-alias": "5.1.1",
     "@rollup/plugin-commonjs": "28.0.3",
     "@rollup/plugin-json": "6.1.0",
-    "@rollup/plugin-node-resolve": "16.0.0",
+    "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-terser": "0.4.4",
     "@rollup/plugin-typescript": "12.1.2",
     "@types/node": "22.13.10",
@@ -28,14 +107,20 @@
     "eslint": "9.22.0",
     "eslint-config-prettier": "10.1.1",
     "eslint-plugin-prettier": "5.2.3",
+    "eslint-plugin-react": "7.37.4",
+    "eslint-plugin-react-compiler": "19.0.0-beta-bafa41b-20250307",
+    "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-simple-import-sort": "12.1.1",
+    "eslint-plugin-solid": "0.14.5",
+    "eslint-plugin-vue": "10.0.0",
     "globals": "16.0.0",
     "prettier": "3.5.3 ",
     "rollup": "4.35.0",
     "rollup-plugin-dts": "6.1.1",
     "rollup-plugin-node-externals": "8.0.0",
     "typescript": "5.8.2",
-    "typescript-eslint": "8.26.1"
+    "typescript-eslint": "8.26.1",
+    "vue-eslint-parser": "10.1.1"
   },
   "files": [
     "lib"

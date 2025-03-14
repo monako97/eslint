@@ -38,27 +38,29 @@ pnpm add -D @moneko/eslint
 在项目根目录创建 `eslint.config.mjs` 文件:
 
 ```js
-import config from '@moneko/eslint';
+import base from '@moneko/eslint/base';
 
-export default config.configs.recommended;
+export default base.configs.recommended;
 ```
 
 ## 可用配置
 
 此包提供以下几种预设配置:
 
-- `recommended` - 推荐配置，适用于大多数 JavaScript/TypeScript 项目
-- 更多配置请参考源代码或文档
+- `base` - 基础配置，适用于大多数 JavaScript/TypeScript 项目
+- `react` - react配置，适用于大多数 react 项目
+- `vue` - vue 配置，适用于大多数 vue 项目
+- `solid` - solidjs 配置，适用于大多数 solidjs 项目
 
 ## 自定义配置
 
 您可以通过扩展默认配置并覆盖规则来自定义配置:
 
 ```js
-import config from '@moneko/eslint';
+import react from '@moneko/eslint/react'; // 使用 react 规则
 
 export default [
-  ...config.configs.recommended,
+  ...react,
   {
     rules: {
       // 您的自定义规则
@@ -74,6 +76,7 @@ export default [
 - **代码格式化**: 与 Prettier 无缝集成，确保代码风格一致
 - **TypeScript 支持**: 针对 TypeScript 项目的特定规则和类型检查集成
 - **Modern JavaScript**: 支持最新的 ECMAScript 特性和语法
+- **开箱即用**: 内置有 React、Vue、Solid JS、Typescript 等语法规则
 
 ## Nodejs API 使用
 
@@ -86,9 +89,9 @@ bracketSameLine: false
 
 ```javascript
 // eslint.config.mjs
-import config from './lib/index.mjs';
+import react from '@moneko/eslint/react';
 
-export default config.configs.recommended;
+export default react;
 ```
 
 ```javascript
@@ -103,7 +106,7 @@ try {
     cache: true,
     fix: fix,
   });
-  const results = await lint.lintFiles(['__tests__/a.ts']);
+  const results = await lint.lintFiles(['__tests__/*.ts', '__tests__/*.tsx']);
   const formatter = await lint.loadFormatter('stylish');
   const output = await formatter.format(results);
 

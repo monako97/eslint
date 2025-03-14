@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "outDir": "lib",
-    "module": "esnext",
+    "module": "NodeNext",
     "target": "esnext",
     "lib": ["esnext"],
     "sourceMap": false,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,

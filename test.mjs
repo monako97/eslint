@@ -8,7 +8,7 @@ try {
     cache: false,
     fix: false,
   });
-  const results = await lint.lintFiles(['__tests__/a.ts']);
+  const results = await lint.lintFiles(['__tests__/*.ts', '__tests__/*.tsx']);
   const formatter = await lint.loadFormatter('stylish');
   const output = await formatter.format(results, {
     cwd: process.cwd(),
