@@ -12,6 +12,9 @@ import esmShim from './esm-shim.mjs';
 const jssToCjsExtension = {
   name: 'js-to-cjs-extension',
   renderChunk(code) {
+    if (code.include('require(reactPath)')) {
+      return `import { createRequire } from 'node:module';const require = createRequire(import.meta.url);${code}`;
+    }
     // 专门替换模板字符串中的 `}.js` 为 `}.cjs`
     return code
       .replace(/}\.js`/g, '}.cjs`')
