@@ -122,7 +122,7 @@ export default {
     commonjs({
       requireReturnsDefault: 'auto',
       esmExternals: false,
-      exclude: ['**/*.node', '**/*.d.ts'],
+      exclude: ['**/*.node', '**/*.d.ts', '**/*.json'],
     }),
     jssToCjsExtension,
     mini,

@@ -1,4 +1,4 @@
-import { ESLint } from './lib/index.mjs';
+import { ESLint } from '@moneko/eslint';
 
 try {
   console.log('ESLint runing...');

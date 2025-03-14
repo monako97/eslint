@@ -1,3 +1,10 @@
-import config from './lib/react.mjs';
+import react from '@moneko/eslint/react';
 
-export default config;
+export default [
+  ...react,
+  {
+    rules: {
+      'react/react-in-jsx-scope': 0,
+    },
+  },
+];
