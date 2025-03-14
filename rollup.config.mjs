@@ -123,6 +123,7 @@ export default {
       requireReturnsDefault: 'auto',
       esmExternals: false,
       exclude: ['**/*.node', '**/*.d.ts', '**/*.json'],
+      ignore: ['react', 'vue', 'solid-js'],
     }),
     jssToCjsExtension,
     mini,
