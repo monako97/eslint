@@ -91,6 +91,7 @@ export default {
         'eslint/package.json',
         'eslint/use-at-your-own-risk',
         'eslint-config-prettier',
+        'eslint-config-prettier/prettier',
         'eslint-plugin-prettier',
         'eslint-plugin-prettier/recommended',
         'eslint-plugin-simple-import-sort',
