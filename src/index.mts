@@ -1,4 +1,3 @@
 import 'core-js/full';
+export type { AST, Linter, Rule, RuleTester, Scope, SourceCode } from './types.js';
 export { ESLint, loadESLint } from 'eslint';
-
-export type { AST, Linter, Rule, SourceCode, Scope, RuleTester } from './types.js';

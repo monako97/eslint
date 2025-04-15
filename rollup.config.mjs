@@ -88,6 +88,7 @@ export default {
       optDeps: true,
       exclude: [
         '@babel/core',
+        'babel-plugin-react-compiler',
         '@babel/preset-typescript',
         '@babel/preset-typescript/package.json',
         'eslint',

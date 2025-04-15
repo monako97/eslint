@@ -1,9 +1,45 @@
 import { ESLint } from '@moneko/eslint';
-import * as core from '@moneko/eslint/babel-core';
-import * as reactCompiler from '@moneko/eslint/react-compiler';
+import { transform } from '@moneko/eslint/babel-core';
+import { BabelPluginReactCompiler } from '@moneko/eslint/react-compiler';
 
-console.log(core);
-console.log(reactCompiler);
+console.log(transform);
+console.log(BabelPluginReactCompiler);
+
+transform(
+  `import { useEffect, useState, createElement } from 'react';
+
+const App = () => {
+    const [a, setA]= useState(1);
+    useEffect(() => {
+        console.log(a);
+    }, [])
+    return createElement('div', {}, 'csa');
+}
+
+export default App;
+`,
+  {
+    sourceFileName: 'index.tsx',
+    filename: 'index.tsx',
+    plugins: [[BabelPluginReactCompiler, {}]],
+    sourceMaps: 'inline',
+    cloneInputAst: false,
+    ast: false,
+    configFile: false,
+    babelrc: false,
+  },
+  (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    if (result === null) {
+      console.log(new Error(`Failed to transform "index.tsx"`));
+      return;
+    }
+    console.log(null, result.code || '', result.map === null ? void 0 : result.map);
+  },
+);
 
 try {
   console.log('ESLint runing...');

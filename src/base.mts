@@ -3,6 +3,7 @@ import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
 import { config, type ConfigArray, configs, type ConfigWithExtends } from 'typescript-eslint';
+
 import type { Linter } from './types.js';
 
 interface GlobalsConfig {
