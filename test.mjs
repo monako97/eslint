@@ -1,4 +1,9 @@
 import { ESLint } from '@moneko/eslint';
+import * as core from '@moneko/eslint/babel-core';
+import * as reactCompiler from '@moneko/eslint/react-compiler';
+
+console.log(core);
+console.log(reactCompiler);
 
 try {
   console.log('ESLint runing...');

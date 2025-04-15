@@ -7,6 +7,8 @@ export default {
     base: 'src/base.mts',
     solid: 'src/solid.mts',
     vue: 'src/vue.mts',
+    'react-compiler': 'src/react-compiler.mts',
+    'babel-core': 'src/babel-core.mts',
   },
   output: {
     dir: 'lib',
