@@ -59,7 +59,7 @@ export default [
         devDeps: true,
         peerDeps: true,
         optDeps: true,
-        exclude: ['synckit', 'prettier'],
+        exclude: ['synckit', 'prettier', '@pkgr/core'],
         include: [],
       }),
       resolvePlugin,
