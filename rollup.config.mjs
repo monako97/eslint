@@ -98,7 +98,7 @@ export default {
         'eslint-config-prettier/prettier',
         'eslint-plugin-prettier',
         'eslint-plugin-prettier/recommended',
-        'eslint-plugin-prettier/worker',
+        'eslint-plugin-prettier/worker.mjs',
         'eslint-plugin-simple-import-sort',
 
         'eslint-plugin-react',
