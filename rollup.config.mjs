@@ -98,6 +98,7 @@ export default {
         'eslint-config-prettier/prettier',
         'eslint-plugin-prettier',
         'eslint-plugin-prettier/recommended',
+        'eslint-plugin-prettier/worker',
         'eslint-plugin-simple-import-sort',
 
         'eslint-plugin-react',
@@ -117,7 +118,7 @@ export default {
         'typescript/lib/tsserverlibrary',
         'core-js/full',
         'jiti',
-        'jiti/package.json'
+        'jiti/package.json',
       ],
       include: [],
     }),
