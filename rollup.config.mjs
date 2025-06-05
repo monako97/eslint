@@ -116,7 +116,8 @@ export default {
         'typescript',
         'typescript/lib/tsserverlibrary',
         'core-js/full',
-        'jiti'
+        'jiti',
+        'jiti/package.json'
       ],
       include: [],
     }),
