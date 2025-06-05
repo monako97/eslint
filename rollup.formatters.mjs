@@ -23,20 +23,26 @@ const resolvePlugin = resolve({
 const aliasPlugin = alias();
 
 export default [
+  
   {
     cache: true,
     preserveSymlinks: true,
     input: {
-      worker: 'worker.cjs',
+      worker: 'worker.mjs',
     },
     perf: true,
     output: {
       dir: 'lib/node_modules/eslint-plugin-prettier',
-      entryFileNames: '[name].cjs',
-      format: 'cjs',
+      entryFileNames: '[name].mjs',
+      format: 'es',
       interop: 'auto',
-      esModule: false,
+      esModule: true,
       exports: 'auto',
+      generatedCode: {
+        preset: 'es2015',
+        privateFields: true,
+        objectShorthand: true,
+      },
       preserveModules: true,
       preserveModulesRoot: 'node_modules/eslint-plugin-prettier',
       validate: true,
@@ -44,6 +50,7 @@ export default [
       inlineDynamicImports: false,
     },
     plugins: [
+      esmShim(),
       aliasPlugin,
       nodeExternals({
         deps: false,
@@ -55,6 +62,8 @@ export default [
       }),
       resolvePlugin,
       commonjs({
+        esmExternals: false,
+        ignoreDynamicRequires: true,
         requireReturnsDefault: 'auto',
         esmExternals: false,
         exclude: ['**/*.node', '**/*.d.ts', '**/*.json'],
@@ -62,6 +71,45 @@ export default [
       mini,
     ],
   },
+  // {
+  //   cache: true,
+  //   preserveSymlinks: true,
+  //   input: {
+  //     worker: 'worker.cjs',
+  //   },
+  //   perf: true,
+  //   output: {
+  //     dir: 'lib/node_modules/eslint-plugin-prettier',
+  //     entryFileNames: '[name].cjs',
+  //     format: 'cjs',
+  //     interop: 'auto',
+  //     esModule: false,
+  //     exports: 'auto',
+  //     preserveModules: true,
+  //     preserveModulesRoot: 'node_modules/eslint-plugin-prettier',
+  //     validate: true,
+  //     sourcemap: false,
+  //     inlineDynamicImports: false,
+  //   },
+  //   plugins: [
+  //     aliasPlugin,
+  //     nodeExternals({
+  //       deps: false,
+  //       devDeps: true,
+  //       peerDeps: true,
+  //       optDeps: true,
+  //       exclude: ['synckit', 'prettier'],
+  //       include: [],
+  //     }),
+  //     resolvePlugin,
+  //     commonjs({
+  //       requireReturnsDefault: 'auto',
+  //       esmExternals: false,
+  //       exclude: ['**/*.node', '**/*.d.ts', '**/*.json'],
+  //     }),
+  //     mini,
+  //   ],
+  // },
   {
     cache: true,
     preserveSymlinks: true,

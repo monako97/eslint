@@ -15,7 +15,7 @@ const jssToCjsExtension = {
     // 专门替换模板字符串中的 `}.js` 为 `}.cjs`
     return code
       .replace(/}\.js`/g, '}.cjs`')
-      .replace(/\.\/worker/g, './worker.cjs')
+      // .replace(/\.\/worker/g, './worker.cjs')
       .replace(".resolve('vue-eslint-parser')", '.resolve("../../../vue-eslint-parser/index.mjs")')
       .replace(".resolve('./base')", '.resolve("./base.mjs")')
       .replace(
