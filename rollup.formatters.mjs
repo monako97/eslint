@@ -7,6 +7,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import { nodeExternals } from 'rollup-plugin-node-externals';
 
+import esmShim from './esm-shim.mjs';
+
 const mini = terser({
   compress: {
     drop_console: true,
