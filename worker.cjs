@@ -1,8 +1,17 @@
-const synckit = require('synckit');
-const prettier = require('prettier');
+// @ts-check
 
-const { runAsWorker } = synckit;
-const { resolveConfig, getFileInfo, format } = prettier;
+/**
+ * @typedef {PrettierOptions & {
+ *   onDiskFilepath: string;
+ *   parserMeta?: ESLint.ObjectMetaProperties['meta'];
+ *   parserPath?: string;
+ *   usePrettierrc?: boolean;
+ * }} Options
+ * @import {FileInfoOptions, Options as PrettierOptions} from 'prettier'
+ * @import {ESLint} from 'eslint'
+ */
+const prettier = require('prettier');
+const { runAsWorker } = require('synckit');
 
 runAsWorker(
   /**
@@ -17,12 +26,12 @@ runAsWorker(
     eslintFileInfoOptions,
   ) => {
     const prettierRcOptions = usePrettierrc
-      ? await resolveConfig(onDiskFilepath, {
+      ? await prettier.resolveConfig(onDiskFilepath, {
           editorconfig: true,
         })
       : null;
 
-    const { ignored, inferredParser } = await getFileInfo(onDiskFilepath, {
+    const { ignored, inferredParser } = await prettier.getFileInfo(onDiskFilepath, {
       resolveConfig: false,
       withNodeModules: false,
       ignorePath: '.prettierignore',
@@ -79,7 +88,7 @@ runAsWorker(
         // it could be processed by `@graphql-eslint/eslint-plugin` or `eslint-plugin-graphql`
         case 'graphql': {
           if (
-            // for `eslint-plugin-graphql`, see https://github.com/apollographql/eslint-plugin-graphql/blob/master/src/index.js#L416
+            // for `eslint-plugin-graphql`, see https://github.com/apollographql/eslint-plugin-graphql/blob/64c524cd6607358803d5fcb7cead0a383a125ccb/src/index.js#L416
             source.startsWith('ESLintPluginGraphQLFile`')
           ) {
             inferParserToBabel = true;
@@ -146,9 +155,7 @@ runAsWorker(
       }
     }
 
-    /**
-     * @type {import('prettier').Options}
-     */
+    /** @type {PrettierOptions} */
     const prettierOptions = {
       ...initialOptions,
       ...prettierRcOptions,
@@ -156,6 +163,6 @@ runAsWorker(
       filepath,
     };
 
-    return format(source, prettierOptions);
+    return prettier.format(source, prettierOptions);
   },
 );
