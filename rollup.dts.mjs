@@ -9,6 +9,8 @@ export default {
     vue: 'src/vue.mts',
     'react-compiler': 'src/react-compiler.mts',
     'babel-core': 'src/babel-core.mts',
+    'babel-typescript': 'src/babel-typescript.mts',
+    'babel-preset-env': 'src/babel-preset-env.mts',
   },
   output: {
     dir: 'lib',

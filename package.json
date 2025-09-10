@@ -1,6 +1,6 @@
 {
   "name": "@moneko/eslint",
-  "version": "1.7.0",
+  "version": "1.8.0-beta.0",
   "type": "module",
   "description": "eslint",
   "main": "lib/index.mjs",
@@ -122,10 +122,41 @@
         "default": "./lib/babel-core.mjs"
       }
     },
+    "./babel-typescript": {
+      "node": {
+        "types": "./lib/babel-typescript.d.mts",
+        "module-sync": "./lib/babel-typescript.mjs",
+        "default": "./lib/babel-typescript.mjs"
+      },
+      "import": {
+        "types": "./lib/babel-typescript.d.mts",
+        "default": "./lib/babel-typescript.mjs"
+      },
+      "default": {
+        "types": "./lib/babel-typescript.d.mts",
+        "default": "./lib/babel-typescript.mjs"
+      }
+    },
+    "./babel-preset-env": {
+      "node": {
+        "types": "./lib/babel-preset-env.d.mts",
+        "module-sync": "./lib/babel-preset-env.mjs",
+        "default": "./lib/babel-preset-env.mjs"
+      },
+      "import": {
+        "types": "./lib/babel-preset-env.d.mts",
+        "default": "./lib/babel-preset-env.mjs"
+      },
+      "default": {
+        "types": "./lib/babel-preset-env.d.mts",
+        "default": "./lib/babel-preset-env.mjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "devDependencies": {
     "@babel/core": "7.28.0",
+    "@babel/preset-env": "7.28.3",
     "@babel/preset-typescript": "7.27.1",
     "@rollup/plugin-alias": "5.1.1",
     "@rollup/plugin-commonjs": "28.0.6",
@@ -134,8 +165,8 @@
     "@rollup/plugin-terser": "0.4.4",
     "@rollup/plugin-typescript": "12.1.4",
     "@types/node": "24.2.0",
-    "babel-plugin-react-compiler": "19.1.0-rc.2",
-    "core-js": "3.45.0",
+    "babel-plugin-react-compiler": "19.1.0-rc.3",
+    "core-js": "3.45.1",
     "eslint": "9.32.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.3.1",
