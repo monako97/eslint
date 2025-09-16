@@ -8,6 +8,7 @@ export {
   type ConfigItem,
   createConfigItem,
   type CreateConfigItemOptions,
+  default,
   DEFAULT_EXTENSIONS,
   type EnvFunction,
   type FileParseCallback,

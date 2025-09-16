@@ -1,6 +1,6 @@
 import { ESLint } from '@moneko/eslint';
 import { transform } from '@moneko/eslint/babel-core';
-import { BabelPluginReactCompiler } from '@moneko/eslint/react-compiler';
+import BabelPluginReactCompiler from '@moneko/eslint/react-compiler';
 
 console.log(transform);
 console.log(BabelPluginReactCompiler);

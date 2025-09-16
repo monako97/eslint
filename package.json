@@ -1,12 +1,12 @@
 {
   "name": "@moneko/eslint",
-  "version": "1.8.0",
+  "version": "1.9.0-beta.0",
   "type": "module",
   "description": "eslint",
   "main": "lib/index.mjs",
   "scripts": {
     "prebuild": "rollup --config rollup.dts.mjs",
-    "build": "rollup -c",
+    "build": "rollup -c && rollup --config rollup.cjs.mjs",
     "postbuild": "rollup --config rollup.formatters.mjs",
     "prepublishOnly": "npm run build"
   },
@@ -18,144 +18,45 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "node": {
-        "types": "./lib/index.d.mts",
-        "module-sync": "./lib/index.mjs",
-        "default": "./lib/index.mjs"
-      },
-      "import": {
-        "types": "./lib/index.d.mts",
-        "default": "./lib/index.mjs"
-      },
-      "default": {
-        "types": "./lib/index.d.mts",
-        "default": "./lib/index.mjs"
-      }
+      "import": "./lib/index.mjs",
+      "require": "./cjs/index.cjs"
     },
     "./base": {
-      "node": {
-        "types": "./lib/base.d.mts",
-        "module-sync": "./lib/base.mjs",
-        "default": "./lib/base.mjs"
-      },
-      "import": {
-        "types": "./lib/base.d.mts",
-        "default": "./lib/base.mjs"
-      },
-      "default": {
-        "types": "./lib/base.d.mts",
-        "default": "./lib/base.mjs"
-      }
+      "import": "./lib/base.mjs",
+      "require": "./cjs/base.cjs"
     },
     "./react": {
-      "node": {
-        "types": "./lib/react.d.mts",
-        "module-sync": "./lib/react.mjs",
-        "default": "./lib/react.mjs"
-      },
-      "import": {
-        "types": "./lib/react.d.mts",
-        "default": "./lib/react.mjs"
-      },
-      "default": {
-        "types": "./lib/react.d.mts",
-        "default": "./lib/react.mjs"
-      }
+      "import": "./lib/react.mjs",
+      "require": "./cjs/react.cjs"
     },
     "./solid": {
-      "node": {
-        "types": "./lib/solid.d.mts",
-        "module-sync": "./lib/solid.mjs",
-        "default": "./lib/solid.mjs"
-      },
-      "import": {
-        "types": "./lib/solid.d.mts",
-        "default": "./lib/solid.mjs"
-      },
-      "default": {
-        "types": "./lib/solid.d.mts",
-        "default": "./lib/solid.mjs"
-      }
+      "import": "./lib/solid.mjs",
+      "require": "./cjs/solid.cjs"
     },
     "./vue": {
-      "node": {
-        "types": "./lib/vue.d.mts",
-        "module-sync": "./lib/vue.mjs",
-        "default": "./lib/vue.mjs"
-      },
-      "import": {
-        "types": "./lib/vue.d.mts",
-        "default": "./lib/vue.mjs"
-      },
-      "default": {
-        "types": "./lib/vue.d.mts",
-        "default": "./lib/vue.mjs"
-      }
+      "import": "./lib/vue.mjs",
+      "require": "./cjs/vue.cjs"
     },
     "./react-compiler": {
-      "node": {
-        "types": "./lib/react-compiler.d.mts",
-        "module-sync": "./lib/react-compiler.mjs",
-        "default": "./lib/react-compiler.mjs"
-      },
-      "import": {
-        "types": "./lib/react-compiler.d.mts",
-        "default": "./lib/react-compiler.mjs"
-      },
-      "default": {
-        "types": "./lib/react-compiler.d.mts",
-        "default": "./lib/react-compiler.mjs"
-      }
+      "import": "./lib/react-compiler.mjs",
+      "require": "./cjs/react-compiler.cjs"
     },
     "./babel-core": {
-      "node": {
-        "types": "./lib/babel-core.d.mts",
-        "module-sync": "./lib/babel-core.mjs",
-        "default": "./lib/babel-core.mjs"
-      },
-      "import": {
-        "types": "./lib/babel-core.d.mts",
-        "default": "./lib/babel-core.mjs"
-      },
-      "default": {
-        "types": "./lib/babel-core.d.mts",
-        "default": "./lib/babel-core.mjs"
-      }
+      "import": "./lib/babel-core.mjs",
+      "require": "./cjs/babel-core.cjs"
     },
     "./babel-typescript": {
-      "node": {
-        "types": "./lib/babel-typescript.d.mts",
-        "module-sync": "./lib/babel-typescript.mjs",
-        "default": "./lib/babel-typescript.mjs"
-      },
-      "import": {
-        "types": "./lib/babel-typescript.d.mts",
-        "default": "./lib/babel-typescript.mjs"
-      },
-      "default": {
-        "types": "./lib/babel-typescript.d.mts",
-        "default": "./lib/babel-typescript.mjs"
-      }
+      "import": "./lib/babel-typescript.mjs",
+      "require": "./cjs/babel-typescript.cjs"
     },
     "./babel-preset-env": {
-      "node": {
-        "types": "./lib/babel-preset-env.d.mts",
-        "module-sync": "./lib/babel-preset-env.mjs",
-        "default": "./lib/babel-preset-env.mjs"
-      },
-      "import": {
-        "types": "./lib/babel-preset-env.d.mts",
-        "default": "./lib/babel-preset-env.mjs"
-      },
-      "default": {
-        "types": "./lib/babel-preset-env.d.mts",
-        "default": "./lib/babel-preset-env.mjs"
-      }
+      "import": "./lib/babel-preset-env.mjs",
+      "require": "./cjs/babel-preset-env.cjs"
     },
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@babel/core": "7.28.0",
+    "@babel/core": "7.28.4",
     "@babel/preset-env": "7.28.3",
     "@babel/preset-typescript": "7.27.1",
     "@rollup/plugin-alias": "5.1.1",
@@ -164,10 +65,11 @@
     "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-terser": "0.4.4",
     "@rollup/plugin-typescript": "12.1.4",
-    "@types/node": "24.2.0",
+    "@types/babel__core": "7.20.5",
+    "@types/node": "24.5.0",
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "core-js": "3.45.1",
-    "eslint": "9.32.0",
+    "eslint": "9.35.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.3.1",
     "eslint-plugin-react": "7.37.5",
@@ -176,15 +78,15 @@
     "eslint-plugin-simple-import-sort": "12.1.1",
     "eslint-plugin-solid": "0.14.5",
     "eslint-plugin-vue": "10.4.0",
-    "globals": "16.3.0",
+    "globals": "16.4.0",
     "jiti": "2.5.1",
     "prettier": "3.5.3 ",
-    "rollup": "4.46.2",
-    "rollup-plugin-dts": "6.2.1",
-    "rollup-plugin-node-externals": "8.0.1",
+    "rollup": "4.50.2",
+    "rollup-plugin-dts": "6.2.3",
+    "rollup-plugin-node-externals": "8.1.1",
     "tslib": "2.8.1",
     "typescript": "5.9.2",
-    "typescript-eslint": "8.39.0",
+    "typescript-eslint": "8.44.0",
     "vue-eslint-parser": "10.2.0"
   },
   "files": [

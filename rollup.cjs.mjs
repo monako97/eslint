@@ -7,7 +7,7 @@ import typescript from '@rollup/plugin-typescript';
 import { nodeExternals } from 'rollup-plugin-node-externals';
 import { exclude } from './exclude.mjs';
 
-import esmShim from './esm-shim.mjs';
+// import esmShim from './esm-shim.mjs';
 
 // 添加自定义插件转换js扩展名为cjs
 const jssToCjsExtension = {
@@ -17,18 +17,18 @@ const jssToCjsExtension = {
     return code
       .replace(/}\.js`/g, '}.cjs`')
       .replace(/\.\/worker/g, './worker.cjs')
-      .replace(".resolve('vue-eslint-parser')", '.resolve("../../../vue-eslint-parser/index.mjs")')
-      .replace(".resolve('./base')", '.resolve("./base.mjs")')
+      .replace(".resolve('vue-eslint-parser')", '.resolve("../../../vue-eslint-parser/index.cjs")')
+      .replace(".resolve('./base')", '.resolve("./base.cjs")')
       .replace(
         ".resolve('./vue2-strongly-recommended')",
-        '.resolve("./vue2-strongly-recommended.mjs")',
+        '.resolve("./vue2-strongly-recommended.cjs")',
       )
       .replace(
         ".resolve('./vue3-strongly-recommended')",
-        '.resolve("./vue3-strongly-recommended.mjs")',
+        '.resolve("./vue3-strongly-recommended.cjs")',
       )
-      .replace(".resolve('./vue3-essential')", '.resolve("./vue3-essential.mjs")')
-      .replace(".resolve('./vue2-essential')", '.resolve("./vue2-essential.mjs")');
+      .replace(".resolve('./vue3-essential')", '.resolve("./vue3-essential.cjs")')
+      .replace(".resolve('./vue2-essential')", '.resolve("./vue2-essential.cjs")');
   },
 };
 
@@ -63,19 +63,19 @@ export default {
     'babel-preset-env': 'src/babel-preset-env.mts',
   },
   output: {
-    dir: 'lib',
-    entryFileNames: '[name].mjs',
-    format: 'es',
+    dir: 'cjs',
+    entryFileNames: '[name].cjs',
+    format: 'cjs',
     interop: 'auto',
     esModule: true,
     exports: 'named',
-    generatedCode: {
-      preset: 'es2015',
-      objectShorthand: false,
-    },
     preserveModules: true,
     preserveModulesRoot: 'src',
     validate: true,
+    generatedCode: {
+      preset: 'es5',
+      objectShorthand: false,
+    },
     sourcemap: false,
     inlineDynamicImports: false,
     externalLiveBindings: true,
@@ -85,7 +85,6 @@ export default {
   preserveSymlinks: true,
   perf: false,
   plugins: [
-    esmShim(),
     aliasPlugin,
     resolvePlugin,
     nodeExternals({
@@ -101,7 +100,7 @@ export default {
       compact: true,
     }),
     typescript({
-      outDir: 'lib',
+      outDir: 'cjs',
     }),
     commonjs({
       requireReturnsDefault: 'auto',

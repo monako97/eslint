@@ -1,6 +1,6 @@
 import dts from 'rollup-plugin-dts';
 
-export default {
+const config = {
   input: {
     index: 'src/index.mts',
     react: 'src/react.mts',
@@ -29,3 +29,15 @@ export default {
     },
   ],
 };
+
+export default [
+  config,
+  {
+    ...config,
+    output: {
+      dir: 'cjs',
+      entryFileNames: '[name].d.cts',
+      format: 'cjs',
+    },
+  }
+];
