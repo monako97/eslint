@@ -98,7 +98,11 @@ export const exclude = [
 
   'eslint',
   'eslint/package.json',
+  'eslint/config',
+  'eslint/universal',
+  'eslint/rules',
   'eslint/use-at-your-own-risk',
+  '@eslint/config-helpers',
   'eslint-config-prettier',
   'eslint-config-prettier/prettier',
   'eslint-plugin-prettier',

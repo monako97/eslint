@@ -1,50 +1,52 @@
+import { type BabelFileResult, transformFromAstSync } from '@babel/core';
+import { parse } from '@babel/parser';
+import BabelPluginReactCompiler from 'babel-plugin-react-compiler';
+import BabelPluginFbt from 'babel-plugin-fbt';
+import BabelPluginFbtRuntime from 'babel-plugin-fbt-runtime';
+import type { PluginOptions } from './types/react-compiler.d.ts';
+
+export type {
+  CompilerDiagnosticDetail,
+  CompilerDiagnosticOptions,
+  CompilerErrorDetailOptions,
+  CompilerPipelineValue,
+  EnvironmentConfig,
+  ExternalFunction,
+  Hook,
+  LintRule,
+  Logger,
+  LoggerEvent,
+  PluginOptions,
+  SourceLocation,
+} from './types/react-compiler.d.ts';
 export {
   compile,
   compileProgram,
   CompilerDiagnostic,
-  type CompilerDiagnosticDetail,
-  type CompilerDiagnosticOptions,
   CompilerError,
   CompilerErrorDetail,
-  type CompilerErrorDetailOptions,
-  type CompilerPipelineValue,
   CompilerSuggestionOperation,
   default,
   Effect,
-  type EnvironmentConfig,
   ErrorSeverity,
-  type ExternalFunction,
   findDirectiveDisablingMemoization,
   findDirectiveEnablingMemoization,
-  type Hook,
-  type LintRule,
   LintRules,
-  type Logger,
-  type LoggerEvent,
   OPT_IN_DIRECTIVES,
   OPT_OUT_DIRECTIVES,
   parseConfigPragmaAsString,
   parseConfigPragmaForTests,
   parsePluginOptions,
-  type PluginOptions,
   printFunctionWithOutlined,
   printHIR,
   printReactiveFunction,
   printReactiveFunctionWithOutlined,
   ProgramContext,
   // runBabelPluginReactCompiler,
-  type SourceLocation,
   validateEnvironmentConfig,
   ValueKind,
   ValueReason,
 } from 'babel-plugin-react-compiler';
-
-import { type BabelFileResult, transformFromAstSync} from '@babel/core';
-import { parse } from '@babel/parser';
-import BabelPluginReactCompiler, { type PluginOptions } from 'babel-plugin-react-compiler';
-import BabelPluginFbt from 'babel-plugin-fbt';
-import BabelPluginFbtRuntime from 'babel-plugin-fbt-runtime';
-
 export function runBabelPluginReactCompiler(
   text: string,
   file: string,

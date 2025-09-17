@@ -1,10 +1,11 @@
 import eslint from '@eslint/js';
+
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
-import { config, type ConfigArray, configs, type ConfigWithExtends } from 'typescript-eslint';
+import tseslint from 'typescript-eslint';
 
-import type { Linter } from './types.js';
+import type { Linter, ConfigWithExtends } from './types.js';
 
 interface GlobalsConfig {
   [name: string]: 'off' | 'readonly' | 'writable' | boolean;
@@ -191,9 +192,9 @@ const base: ConfigWithExtends = {
   ignores: ['node_modules/', 'dist/', '__snapshots__/', '**/**/*.min.js', '**/**/*.umd.js'],
 };
 
-const recommended: ConfigArray = config(
+const recommended: ConfigWithExtends[] = [
   eslint.configs.recommended,
-  ...configs.recommended,
+  ...tseslint.configs.recommended,
   base,
   {
     files: ['*.ts', '*.ctsx', '*.mtsx', '*.tsx', '*.cts', '*.mts'],
@@ -231,10 +232,10 @@ const recommended: ConfigArray = config(
   importSortConfig,
   {
     files: ['**/*.js', '**/*.cjs', '**/*.mjs', '**/*.d.ts'],
-    ...configs.disableTypeChecked,
+    ...tseslint.configs.disableTypeChecked,
   },
   prettierRecommended,
-);
+];
 
 const plugin = {
   configs: {
