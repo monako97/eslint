@@ -1,6 +1,6 @@
 {
   "name": "@moneko/eslint",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "type": "module",
   "description": "eslint",
   "main": "lib/index.mjs",
@@ -100,7 +100,8 @@
     "file-entry-cache": "10.1.4"
   },
   "files": [
-    "lib"
+    "lib",
+    "cjs"
   ],
   "packageManager": "yarn@1.22.22"
 }
