@@ -1,5 +1,5 @@
 import 'core-js/full';
-export {
+export type {
   AST,
   Linter,
   Rule,
@@ -11,5 +11,5 @@ export {
   InfiniteArray,
   SimpleExtendsElement,
   ExtendsElement,
-} from './types.js';
+} from './eslint.d.ts';
 export { ESLint, loadESLint } from 'eslint';

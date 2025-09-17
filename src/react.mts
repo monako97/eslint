@@ -3,7 +3,7 @@ import reactCompiler from 'eslint-plugin-react-compiler';
 import hooks from 'eslint-plugin-react-hooks';
 
 import base from './base.mjs';
-import type { Linter } from './types.js';
+import type { Linter } from './eslint.d.ts';
 
 const config = [
   ...base.configs.recommended,

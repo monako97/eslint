@@ -46,9 +46,9 @@
       "import": "./lib/babel-core.mjs",
       "require": "./cjs/babel-core.cjs"
     },
-    "./babel-parse": {
-      "import": "./lib/babel-parse.mjs",
-      "require": "./cjs/babel-parse.cjs"
+    "./babel-parser": {
+      "import": "./lib/babel-parser.mjs",
+      "require": "./cjs/babel-parser.cjs"
     },
     "./babel-typescript": {
       "import": "./lib/babel-typescript.mjs",

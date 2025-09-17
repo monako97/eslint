@@ -5,7 +5,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-import type { Linter, ConfigWithExtends } from './types.js';
+import type { Linter, ConfigWithExtends } from './eslint.d.ts';
 
 interface GlobalsConfig {
   [name: string]: 'off' | 'readonly' | 'writable' | boolean;

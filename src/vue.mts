@@ -1,7 +1,7 @@
 import base from './base.mjs';
 import pluginVue from 'eslint-plugin-vue';
 
-import type { Linter } from './types.js';
+import type { Linter } from './eslint.d.ts';
 
 const config = [
   ...base.configs.recommended,

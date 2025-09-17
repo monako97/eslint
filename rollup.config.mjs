@@ -52,7 +52,7 @@ export default {
     'babel-core': 'src/babel-core.mts',
     'babel-typescript': 'src/babel-typescript.mts',
     'babel-preset-env': 'src/babel-preset-env.mts',
-    'babel-parse': 'src/babel-parse.mts',
+    'babel-parser': 'src/babel-parser.mts',
   },
   output: {
     dir: 'lib',

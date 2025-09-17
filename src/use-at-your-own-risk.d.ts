@@ -27,7 +27,7 @@
  */
 
 
-import { ESLint, Rule } from "./types";
+import { ESLint, Rule } from "./eslint.d.ts";
 
 /** @deprecated */
 export const builtinRules: Map<string, Rule.RuleModule> = {};
