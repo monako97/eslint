@@ -32,15 +32,6 @@ const jssToCjsExtension = {
   },
 };
 
-const mini = terser({
-  compress: {
-    drop_console: true,
-    drop_debugger: true,
-    keep_classnames: true,
-  },
-  keep_classnames: true,
-  keep_fnames: true,
-});
 const resolvePlugin = resolve({
   preferBuiltins: true,
   exportConditions: ['node', 'import'],
@@ -61,6 +52,7 @@ export default {
     'babel-core': 'src/babel-core.mts',
     'babel-typescript': 'src/babel-typescript.mts',
     'babel-preset-env': 'src/babel-preset-env.mts',
+    'babel-parse': 'src/babel-parse.mts',
   },
   output: {
     dir: 'lib',
@@ -111,6 +103,6 @@ export default {
       ignoreDynamicRequires: true,
     }),
     jssToCjsExtension,
-    // mini,
+    terser(),
   ],
 };

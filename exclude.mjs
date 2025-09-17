@@ -18,6 +18,9 @@ export const exclude = [
   'jsx-ast-utils',
   'babel-plugin-react-compiler',
   'babel-plugin-react-compiler/package.json',
+  'babel-plugin-fbt',
+  'babel-plugin-fbt-runtime',
+  'babel-plugin-fbt/dist/FbtConstants',
 
   '@babel/preset-typescript',
   '@babel/preset-typescript/package.json',
@@ -123,27 +126,27 @@ export const exclude = [
 ];
 
 export function manualChunks(id) {
-	if (id.includes('babel')) {
-		return 'babel';
-	}
-	if (id.includes('eslint')) {
-		return 'eslint';
-	}
-	if (id.includes('typescript')) {
-		return 'typescript';
-	}
-	if (id.includes('core-js')) {
-		return 'core-js';
-	}
-	if (id.includes('jiti')) {
-		return 'jiti';
-	}
-	if (id.includes('prettier')) {
-		return 'prettier';
-	}
-	if (id.includes('globals')) {
-		return 'globals';
-	}
+  if (id.includes('babel')) {
+    return 'babel';
+  }
+  if (id.includes('eslint')) {
+    return 'eslint';
+  }
+  if (id.includes('typescript')) {
+    return 'typescript';
+  }
+  if (id.includes('core-js')) {
+    return 'core-js';
+  }
+  if (id.includes('jiti')) {
+    return 'jiti';
+  }
+  if (id.includes('prettier')) {
+    return 'prettier';
+  }
+  if (id.includes('globals')) {
+    return 'globals';
+  }
 
-	return null;
+  return null;
 }

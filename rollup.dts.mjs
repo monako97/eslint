@@ -9,6 +9,7 @@ const config = {
     vue: 'src/vue.mts',
     'react-compiler': 'src/react-compiler.mts',
     'babel-core': 'src/babel-core.mts',
+    'babel-parse': 'src/babel-parse.mts',
     'babel-typescript': 'src/babel-typescript.mts',
     'babel-preset-env': 'src/babel-preset-env.mts',
   },

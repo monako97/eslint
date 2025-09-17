@@ -1,12 +1,11 @@
 import { ESLint } from '@moneko/eslint';
 import { transform } from '@moneko/eslint/babel-core';
-import BabelPluginReactCompiler from '@moneko/eslint/react-compiler';
+import BabelPluginReactCompiler, { runBabelPluginReactCompiler } from '@moneko/eslint/react-compiler';
 
 console.log(transform);
 console.log(BabelPluginReactCompiler);
 
-transform(
-  `import { useEffect, useState, createElement } from 'react';
+const jsx = `import { useEffect, useState, createElement } from 'react';
 
 const App = () => {
     const [a, setA]= useState(1);
@@ -17,7 +16,8 @@ const App = () => {
 }
 
 export default App;
-`,
+`;
+transform(jsx,
   {
     sourceFileName: 'index.tsx',
     filename: 'index.tsx',
@@ -41,6 +41,9 @@ export default App;
   },
 );
 
+const result = runBabelPluginReactCompiler(jsx, 'index.tsx', 'typescript', {});
+
+console.log(result.code);
 try {
   console.log('ESLint runing...');
   console.time('ESLint');

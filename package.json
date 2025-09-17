@@ -1,6 +1,6 @@
 {
   "name": "@moneko/eslint",
-  "version": "1.9.0-beta.1",
+  "version": "1.9.0",
   "type": "module",
   "description": "eslint",
   "main": "lib/index.mjs",
@@ -8,7 +8,8 @@
     "prebuild": "rollup --config rollup.dts.mjs",
     "build": "rollup -c && rollup --config rollup.cjs.mjs",
     "postbuild": "rollup --config rollup.formatters.mjs",
-    "prepublishOnly": "npm run build"
+    "test": "node ./test.mjs && node ./test.cjs",
+    "prepublishOnly": "yarn build"
   },
   "keywords": [
     "eslint-config-neko",
@@ -45,6 +46,10 @@
       "import": "./lib/babel-core.mjs",
       "require": "./cjs/babel-core.cjs"
     },
+    "./babel-parse": {
+      "import": "./lib/babel-parse.mjs",
+      "require": "./cjs/babel-parse.cjs"
+    },
     "./babel-typescript": {
       "import": "./lib/babel-typescript.mjs",
       "require": "./cjs/babel-typescript.cjs"
@@ -66,7 +71,9 @@
     "@rollup/plugin-terser": "0.4.4",
     "@rollup/plugin-typescript": "12.1.4",
     "@types/babel__core": "7.20.5",
-    "@types/node": "24.5.0",
+    "@types/node": "24.5.1",
+    "babel-plugin-fbt": "1.0.0",
+    "babel-plugin-fbt-runtime": "1.0.0",
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "core-js": "3.45.1",
     "eslint": "9.35.0",
@@ -89,8 +96,11 @@
     "typescript-eslint": "8.44.0",
     "vue-eslint-parser": "10.2.0"
   },
+  "resolutions": {
+    "file-entry-cache": "10.1.4"
+  },
   "files": [
-    "lib",
-    "cjs"
-  ]
+    "lib"
+  ],
+  "packageManager": "yarn@1.22.22"
 }
