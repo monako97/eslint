@@ -1,6 +1,6 @@
 {
   "name": "@moneko/eslint",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "type": "module",
   "description": "eslint",
   "main": "lib/index.mjs",
@@ -95,9 +95,6 @@
     "typescript": "5.9.2",
     "typescript-eslint": "8.44.0",
     "vue-eslint-parser": "10.2.0"
-  },
-  "resolutions": {
-    "file-entry-cache": "10.1.4"
   },
   "files": [
     "lib",

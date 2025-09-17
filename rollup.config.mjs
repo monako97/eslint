@@ -97,7 +97,7 @@ export default {
     }),
     commonjs({
       requireReturnsDefault: 'auto',
-      esmExternals: true,
+      esmExternals: false,
       exclude: ['**/*.node', '**/*.d.ts', '**/*.json'],
       ignore: ['react', 'vue', 'solid-js'],
       ignoreDynamicRequires: true,
