@@ -9,6 +9,6 @@ export type {
   PipelineOperatorPluginOptions,
   RecordAndTuplePluginOptions,
   TypeScriptPluginOptions,
-} from './types/babel-parser.js';
+} from './types/babel-parser.d.ts';
 
 export { parse, parseExpression, tokTypes } from '@babel/parser';
