@@ -1,7 +1,7 @@
 // This file is auto-generated! Do not modify it directly.
 // Run `yarn gulp bundle-dts` to re-generate it.
 /* eslint-disable @typescript-eslint/consistent-type-imports, @typescript-eslint/no-redundant-type-constituents */
-import { File, Expression } from "./babel-types.d.ts";
+import { File, Expression } from "./babel-types.js";
 
 type BABEL_8_BREAKING = false;
 type IF_BABEL_7<V> = false extends BABEL_8_BREAKING ? V : never;
