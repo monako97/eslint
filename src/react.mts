@@ -15,7 +15,8 @@ const config = [
       },
     },
   },
-  hooks.configs.flat.recommended,
+  // hooks.configs.flat['recommended-latest'],
+  hooks.configs['recommended-latest'],
   reactCompiler.configs.recommended,
 ] as Linter.Config[];
 
