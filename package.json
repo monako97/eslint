@@ -1,6 +1,6 @@
 {
   "name": "@moneko/eslint",
-  "version": "1.9.9",
+  "version": "1.9.10",
   "type": "module",
   "description": "eslint",
   "main": "lib/index.mjs",
