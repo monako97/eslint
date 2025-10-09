@@ -8,6 +8,13 @@ import type { Linter } from './eslint.d.ts';
 const config = [
   ...base.configs.recommended,
   react.configs.flat.recommended,
+  {
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+  },
   react.configs.flat['jsx-runtime'],
   hooks.configs.flat['recommended-latest'],
   reactCompiler.configs.recommended,
