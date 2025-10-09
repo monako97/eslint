@@ -4,6 +4,7 @@ const config = {
   input: {
     index: 'src/index.mts',
     react: 'src/react.mts',
+    'react-jsx': 'src/react-jsx.mts',
     base: 'src/base.mts',
     solid: 'src/solid.mts',
     vue: 'src/vue.mts',

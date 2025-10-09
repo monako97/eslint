@@ -1,6 +1,6 @@
 {
   "name": "@moneko/eslint",
-  "version": "1.9.6",
+  "version": "1.9.7",
   "type": "module",
   "description": "eslint",
   "main": "lib/index.mjs",
@@ -29,6 +29,10 @@
     "./react": {
       "import": "./lib/react.mjs",
       "require": "./cjs/react.cjs"
+    },
+    "./react-jsx": {
+      "import": "./lib/react-jsx.mjs",
+      "require": "./cjs/react-jsx.cjs"
     },
     "./solid": {
       "import": "./lib/solid.mjs",
