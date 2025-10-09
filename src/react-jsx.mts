@@ -16,8 +16,9 @@ const config = [
     },
   },
   react.configs.flat['jsx-runtime'],
-  hooks.configs.flat['recommended-latest'],
+  hooks.configs.flat.recommended,
   reactCompiler.configs.recommended,
 ] as Linter.Config[];
 
 export default config;
+
