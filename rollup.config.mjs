@@ -5,9 +5,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import { nodeExternals } from 'rollup-plugin-node-externals';
-import { exclude } from './exclude.mjs';
 
 import esmShim from './esm-shim.mjs';
+import { exclude } from './exclude.mjs';
 
 // 添加自定义插件转换js扩展名为cjs
 const jssToCjsExtension = {
@@ -46,6 +46,7 @@ export default {
     index: 'src/index.mts',
     react: 'src/react.mts',
     'react-jsx': 'src/react-jsx.mts',
+    'react-legacy': 'src/react-legacy.mts',
     base: 'src/base.mts',
     solid: 'src/solid.mts',
     vue: 'src/vue.mts',

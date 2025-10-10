@@ -5,6 +5,7 @@ const config = {
     index: 'src/index.mts',
     react: 'src/react.mts',
     'react-jsx': 'src/react-jsx.mts',
+    'react-legacy': 'src/react-legacy.mts',
     base: 'src/base.mts',
     solid: 'src/solid.mts',
     vue: 'src/vue.mts',
@@ -41,5 +42,5 @@ export default [
       entryFileNames: '[name].d.cts',
       format: 'cjs',
     },
-  }
+  },
 ];

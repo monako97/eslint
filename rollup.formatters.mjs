@@ -32,7 +32,7 @@ const getConfig = (dir) => {
       },
       perf: false,
       output: {
-        dir: dir + '/node_modules/eslint-plugin-prettier',
+        dir: `${dir}/node_modules/eslint-plugin-prettier`,
         entryFileNames: '[name].cjs',
         format: 'cjs',
         interop: 'auto',
@@ -74,7 +74,7 @@ const getConfig = (dir) => {
       },
       perf: false,
       output: {
-        dir: dir + '/node_modules/eslint/lib/cli-engine/formatters',
+        dir: `${dir}/node_modules/eslint/lib/cli-engine/formatters`,
         entryFileNames: '[name].cjs',
         format: 'cjs',
         interop: 'auto',
@@ -106,8 +106,7 @@ const getConfig = (dir) => {
           name: 'fix-formatters',
           renderChunk(code) {
             // 如果cli-engine/formatters/formatters-meta.json不存在，则复制
-            const name =
-              dir + '/node_modules/eslint/lib/cli-engine/formatters/formatters-meta.json';
+            const name = `${dir}/node_modules/eslint/lib/cli-engine/formatters/formatters-meta.json`;
 
             if (!existsSync(name)) {
               // 判断文件夹是否存在
@@ -133,6 +132,7 @@ const getConfig = (dir) => {
     },
   ];
 };
+
 export default [
   // {
   //   cache: true,
