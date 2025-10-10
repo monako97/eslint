@@ -111,7 +111,6 @@ export const exclude = [
 
   'eslint-plugin-react',
   'eslint-plugin-react-hooks',
-  'eslint-plugin-react-compiler',
 
   'eslint-plugin-solid',
   'eslint-plugin-solid/configs/typescript',

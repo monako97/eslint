@@ -3,6 +3,7 @@ const { transform } = require('@moneko/eslint/babel-core');
 const ReactCompiler = require('@moneko/eslint/react-compiler');
 
 const { runBabelPluginReactCompiler, default: BabelPluginReactCompiler } = ReactCompiler;
+
 console.log(transform);
 console.log(BabelPluginReactCompiler);
 
@@ -18,7 +19,9 @@ const App = () => {
 
 export default App;
 `;
-transform(jsx,
+
+transform(
+  jsx,
   {
     sourceFileName: 'index.tsx',
     filename: 'index.tsx',
@@ -60,9 +63,8 @@ try {
         done(output, results);
       });
       return;
-    } else {
-      done(output, results);
     }
+    done(output, results);
   };
   const done = (output, results) => {
     if (output) {
@@ -75,6 +77,7 @@ try {
       process.exit(1);
     }
   };
+
   lint.lintFiles(['__tests__/*.ts', '__tests__/*.tsx']).then((results) => {
     lint.loadFormatter('stylish').then((formatter) => {
       let format = formatter.format(results, {
@@ -84,6 +87,7 @@ try {
 
       if (typeof format === 'string') {
         let output = format;
+
         ppp(fix, output, results);
       } else {
         format.then((output) => {

@@ -1,6 +1,8 @@
 import { ESLint } from '@moneko/eslint';
-import { transform } from '@moneko/eslint/babel-core';
-import BabelPluginReactCompiler, { runBabelPluginReactCompiler } from '@moneko/eslint/react-compiler';
+import { transform, transformAsync } from '@moneko/eslint/babel-core';
+import BabelPluginReactCompiler, {
+  runBabelPluginReactCompiler,
+} from '@moneko/eslint/react-compiler';
 
 const jsx = `import { useEffect, useState, createElement } from 'react';
 
@@ -14,7 +16,9 @@ const App = () => {
 
 export default App;
 `;
-transform(jsx,
+
+transform(
+  jsx,
   {
     sourceFileName: 'index.tsx',
     filename: 'index.tsx',
@@ -72,12 +76,10 @@ try {
   console.log(error);
 }
 
-import { transformAsync } from '@moneko/eslint/babel-core';
 import BabelPresetEnv from '@moneko/eslint/babel-preset-env';
 import BabelPresetTypescript from '@moneko/eslint/babel-typescript';
 import jsxDomTransform from 'babel-plugin-jsx-dom-expressions';
 import BabelPluginSolidRefresh from 'solid-refresh/babel';
-
 
 const jsxDomExpressions = {
   moduleName: 'solid-js/web',
@@ -99,7 +101,8 @@ const jsxDomExpressions = {
   hydratable: false,
 };
 
-const solidres = await transformAsync(`import { createEffect, mergeProps } from 'solid-js';
+const solidres = await transformAsync(
+  `import { createEffect, mergeProps } from 'solid-js';
 import { customElement, noShadowDOM } from 'solid-element';
 
 import type { CustomElement } from '..';
@@ -157,34 +160,34 @@ Provider.registry = () => {
   });
 };
 export default Provider;
-`, {
-  sourceFileName: 'index.s.ts',
-  filename: 'index.s.tsx',
-  sourceMaps: 'inline',
-  cloneInputAst: false,
-  ast: false,
-  configFile: false,
-  babelrc: false,
-  presets: [
-    [
-      BabelPresetEnv,
-      {
-        modules: false,
-      },
+`,
+  {
+    sourceFileName: 'index.s.ts',
+    filename: 'index.s.tsx',
+    sourceMaps: 'inline',
+    cloneInputAst: false,
+    ast: false,
+    configFile: false,
+    babelrc: false,
+    presets: [
+      [
+        BabelPresetEnv,
+        {
+          modules: false,
+        },
+      ],
+      [BabelPresetTypescript, {}],
     ],
-    [BabelPresetTypescript, {
-      
-    }],
-  ],
-  plugins: [
-    [jsxDomTransform, {...jsxDomExpressions, }],
-    [
-      BabelPluginSolidRefresh,
-      {
-        bundler: 'webpack5',
-      },
+    plugins: [
+      [jsxDomTransform, { ...jsxDomExpressions }],
+      [
+        BabelPluginSolidRefresh,
+        {
+          bundler: 'webpack5',
+        },
+      ],
     ],
-  ]
-});
+  },
+);
 
-console.log(solidres)
+console.log(solidres);

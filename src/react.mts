@@ -1,5 +1,4 @@
 import react from 'eslint-plugin-react';
-import reactCompiler from 'eslint-plugin-react-compiler';
 import hooks from 'eslint-plugin-react-hooks';
 
 import base from './base.mjs';
@@ -15,9 +14,7 @@ const config = [
       },
     },
   },
-  // hooks.configs.flat['recommended-latest'],
-  hooks.configs['recommended-latest'],
-  reactCompiler.configs.recommended,
+  (hooks as unknown as typeof hooks.default).configs.flat.recommended,
 ] as Linter.Config[];
 
 export default config;
