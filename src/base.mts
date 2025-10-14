@@ -1,4 +1,5 @@
 import eslint from '@eslint/js';
+import { globalIgnores } from "eslint/config";
 
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
@@ -189,7 +190,6 @@ const base: ConfigWithExtends = {
     globals: globalsVars,
   },
   rules: basicRules,
-  ignores: ['node_modules/', 'dist/', '__snapshots__/', '**/**/*.min.js', '**/**/*.umd.js'],
 };
 
 const recommended: ConfigWithExtends[] = [
@@ -235,6 +235,7 @@ const recommended: ConfigWithExtends[] = [
     ...tseslint.configs.disableTypeChecked,
   },
   prettierRecommended,
+  globalIgnores(['node_modules/', 'dist/', '__snapshots__/', '**/**/*.min.js', '**/**/*.umd.js']),
 ];
 
 const plugin = {

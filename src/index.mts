@@ -13,3 +13,4 @@ export type {
   ExtendsElement,
 } from './eslint.d.ts';
 export { ESLint, loadESLint } from 'eslint';
+export { defineConfig, globalIgnores } from 'eslint/config';
