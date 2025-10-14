@@ -1,8 +1,9 @@
 import { type BabelFileResult, transformFromAstSync } from '@babel/core';
 import { parse } from '@babel/parser';
-import BabelPluginReactCompiler from 'babel-plugin-react-compiler';
 import BabelPluginFbt from 'babel-plugin-fbt';
 import BabelPluginFbtRuntime from 'babel-plugin-fbt-runtime';
+import BabelPluginReactCompiler from 'babel-plugin-react-compiler';
+
 import type { PluginOptions } from './types/react-compiler.d.ts';
 
 export type {
@@ -72,5 +73,6 @@ export function runBabelPluginReactCompiler(
     configFile: false,
     babelrc: false,
   });
+
   return result;
 }

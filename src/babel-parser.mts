@@ -10,5 +10,4 @@ export type {
   RecordAndTuplePluginOptions,
   TypeScriptPluginOptions,
 } from './types/babel-parser.d.ts';
-
 export { parse, parseExpression, tokTypes } from '@babel/parser';

@@ -1,7 +1,7 @@
 export {
   default,
-  type Options,
-  isPluginRequired,
-  transformIncludesAndExcludes,
   getModulesPluginNames,
+  isPluginRequired,
+  type Options,
+  transformIncludesAndExcludes,
 } from '@babel/preset-env';
