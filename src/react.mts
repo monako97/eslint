@@ -14,7 +14,7 @@ const config = [
       },
     },
   },
-  (hooks as unknown as typeof hooks.default).configs.flat.recommended,
+  hooks.configs.flat.recommended,
 ] as Linter.Config[];
 
 export default config;

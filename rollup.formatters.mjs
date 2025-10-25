@@ -28,7 +28,8 @@ const getConfig = (dir) => {
       cache: true,
       preserveSymlinks: true,
       input: {
-        worker: 'worker.cjs',
+        // worker: 'worker.cjs',
+        worker: 'node_modules/eslint-plugin-prettier/worker.mjs',
       },
       perf: false,
       output: {
@@ -133,53 +134,4 @@ const getConfig = (dir) => {
   ];
 };
 
-export default [
-  // {
-  //   cache: true,
-  //   preserveSymlinks: true,
-  //   input: {
-  //     worker: 'worker.mjs',
-  //   },
-  //   perf: false,
-  //   output: {
-  //     dir: 'lib/node_modules/eslint-plugin-prettier',
-  //     entryFileNames: '[name].mjs',
-  //     format: 'es',
-  //     interop: 'auto',
-  //     esModule: true,
-  //     exports: 'auto',
-  //     generatedCode: {
-  //       preset: 'es2015',
-  //       privateFields: true,
-  //       objectShorthand: true,
-  //     },
-  //     preserveModules: true,
-  //     preserveModulesRoot: 'node_modules/eslint-plugin-prettier',
-  //     validate: true,
-  //     sourcemap: false,
-  //     inlineDynamicImports: false,
-  //   },
-  //   plugins: [
-  //     esmShim(),
-  //     aliasPlugin,
-  //     nodeExternals({
-  //       deps: false,
-  //       devDeps: true,
-  //       peerDeps: true,
-  //       optDeps: true,
-  //       exclude: ['synckit', 'prettier', '@pkgr/core'],
-  //       include: [],
-  //     }),
-  //     resolvePlugin,
-  //     commonjs({
-  //       requireReturnsDefault: 'auto',
-  //       esmExternals: false,
-  //       exclude: ['**/*.node', '**/*.d.ts', '**/*.json'],
-  //       ignoreDynamicRequires: true,
-  //     }),
-  //     mini,
-  //   ],
-  // },
-  ...getConfig('lib'),
-  ...getConfig('cjs'),
-];
+export default [...getConfig('lib'), ...getConfig('cjs')];
